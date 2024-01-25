@@ -26,6 +26,11 @@
     - influxの設定がおかしいのか、wsl上のgrafanaがアクセスを拒まれているのか
     - どっちなのかがいまいち自信がない
     - とにかくまいった
+- grafana cloudもためした
+    - 当然のようにinflux dbくんと接続されない
+    - どうしてだよおお
+    - 逆に、cloudとlocalのdbをつなげるのは？
+    - ためすのがめんどいのであとで
 
 ### docker
 - カーネル上で動作する
@@ -35,3 +40,10 @@
     - wsl1はシステムコールを翻訳してwindowsカーネルで動くからdocker非対応
 - 一応decktopを使わないでwsl2上でdockerを構築することも可能らしい
     - 商用利用のときぐらいしかこういうケースはない
+
+### 備忘録
+- databaseはUSBシリアルデバイスとの通信が必須
+- LoramoduleからのUSBシリアル信号を読み取ってdatabase形式に変換して保存する必要があるため
+- となるとwsl上にdockerでinflux dbを立てるのはしんどい
+    - wslではUSBデバイス非対応だから
+- windows上でコードを実行し、そのコードがcloud上のinflux dbと接続されるという仕組みが必要
