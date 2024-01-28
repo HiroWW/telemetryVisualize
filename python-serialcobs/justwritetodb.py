@@ -1,6 +1,8 @@
 from influxdb_client_3 import InfluxDBClient3
 import os
-
+import time
+import serial
+import struct
 # 環境変数からトークンを取得
 # token = os.getenv('INFLUX_TOKEN')
 token = "WeoauU5NpcJYeKxFS0-jIFjS4Qs_eZv79CkVn2wbdA9UsnIsLhFuxK_tk-2xqJiYx1a5fgGP0Oooyw0s50Vt4A=="
@@ -41,7 +43,9 @@ lines = [
 ]
 
 lines2 = [
-    "telemetrytest2,flight=no mode=142680.0,gpsacc=12.0 1706385600",
-    "telemetrytest,room=Living\ Room temp=22.7,hum=36.5,co=26i 1706385600"
+    "telemetrytest5,flight=no mode=142680.0,gpsacc=12.01 1706431683"
 ]
-print(client.write(lines2,write_precision='s'))
+# 現在のUnixタイムスタンプを秒単位で取得
+current_time = int(time.time())
+print(current_time)
+client.write(lines2,write_precision='s')
