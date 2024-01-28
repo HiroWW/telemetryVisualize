@@ -1,10 +1,10 @@
 # telemetryVisualizer
 
 ## システム概要
-MCU <-USBserial-> Python3 <-https-> InfluxDB Cloud serverless <-FLightSQL-> Grafana
+マイコンからのデータをGrafanaによって可視化するソフトウェア
 
-で通信を行い、MCUからのデータの可視化を行う
-
+- 通信の流れ
+    - MCU <-(USBserial)> Python3 <-(https)-> InfluxDB Cloud serverless <-(https / FlightSQL)-> Grafana
 - MCU
     - Teensy4.1
     - COBS変換してシリアル通信でPCへ送信
