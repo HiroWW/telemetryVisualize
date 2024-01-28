@@ -70,7 +70,7 @@ def write_to_influx(data):
     print("============influxdbLINEPROTOCOL============")
     print(line)
     # InfluxDBに書き込む
-    # client.write([line], write_precision='s')
+    client.write([line], write_precision='s')
 
 # USBシリアル通信の設定
 serial_port = '/dev/ttyACM0'  # ポートは環境によって異なる
