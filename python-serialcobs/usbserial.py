@@ -66,7 +66,7 @@ def write_to_influx(data):
     # Line Protocol形式の文字列を構築
     # measurementを"telemetry"とし、各fieldをデータから取得
     # タグはflight=no1として固定
-    fields = ','.join([f'{key}={value}i' for key, value in data.items() if key != 'checkSum'])
+    fields = ','.join([f'{key}={value}' for key, value in data.items() if key != 'checkSum'])
     line = f"telemetry,flight=no1 {fields}"
     print("============influxdbLINEPROTOCOL============")
     print(line)

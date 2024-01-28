@@ -8,7 +8,7 @@ token = "WeoauU5NpcJYeKxFS0-jIFjS4Qs_eZv79CkVn2wbdA9UsnIsLhFuxK_tk-2xqJiYx1a5fgG
 client = InfluxDBClient3(
     host='https://us-east-1-1.aws.cloud2.influxdata.com/',
     token=token,
-    database='testDatabase'
+    database='testDatabase2'
 )
 
 lines = [
@@ -41,6 +41,7 @@ lines = [
 ]
 
 lines2 = [
-    "telemetrytest,flight=no time=26725.5, 1706385600"
+    "telemetrytest2,flight=no mode=142680.0,gpsacc=12.0 1706385600",
+    "telemetrytest,room=Living\ Room temp=22.7,hum=36.5,co=26i 1706385600"
 ]
-client.write(lines2,write_precision='s')
+print(client.write(lines2,write_precision='s'))
