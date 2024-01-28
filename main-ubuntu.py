@@ -102,7 +102,8 @@ while True:
         data = decode_packet(packet)
         if data is not None:
             # データの処理 (例: プリント、データベースへの書き込みなど)
-            # print(f"Decoded data: {data}")
+            print("=======STRUCT=======")
+            print(f"Decoded data: {data}")
             # InfluxDBに書き込む
             write_to_influx(data)
         else:

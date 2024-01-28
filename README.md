@@ -18,6 +18,7 @@
 ## How To Use
 - docker compose up -d
     - grafanaの立ち上げ
+        - そのうちlocalでdbも立てられるようにしたい
     - http://localhost:8086へブラウザでアクセス
 - source ./envs/virtual-env/bin/activate
     - envs/virtual-env以下のpython仮想環境のアクティベート
