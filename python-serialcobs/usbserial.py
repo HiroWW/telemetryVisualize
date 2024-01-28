@@ -3,6 +3,7 @@ import os
 
 import serial
 import struct
+import time
 def cobs_decode(decoded_data_length, raw_data):
     # decoded_data_length = len(raw_data) - 1  # 最初のバイトは長さのため、デコードされたデータの長さは1小さい
     decoded = bytearray(decoded_data_length)
@@ -59,7 +60,7 @@ token = "WeoauU5NpcJYeKxFS0-jIFjS4Qs_eZv79CkVn2wbdA9UsnIsLhFuxK_tk-2xqJiYx1a5fgG
 client = InfluxDBClient3(
     host='https://us-east-1-1.aws.cloud2.influxdata.com/',
     token=token,
-    database='testDatabase'
+    database='telemetryDatabase'
 )
 
 def write_to_influx(data):
@@ -67,7 +68,9 @@ def write_to_influx(data):
     # measurementを"telemetry"とし、各fieldをデータから取得
     # タグはflight=no1として固定
     fields = ','.join([f'{key}={value:.6e}' for key, value in data.items() if key != 'checkSum'])
-    line = f"telemetry,flight=no1 {fields}"
+    # 現在のUnixタイムスタンプを秒単位で取得
+    current_time = int(time.time())
+    line = f"telemetry,flight=no1 {fields} {current_time}"
     print("============influxdbLINEPROTOCOL============")
     print(line)
     # InfluxDBに書き込む
