@@ -1,5 +1,9 @@
 # telemetryVisualizer
 
+GAIA(仮称)
+
+Groundstation Assembeled by InfluxDB and grAfana
+
 ## システム概要
 マイコンからのデータをGrafanaによって可視化するソフトウェア
 
@@ -23,7 +27,12 @@
 - source ./envs/virtual-env/bin/activate
     - envs/virtual-env以下のpython仮想環境のアクティベート
 - PCにTeensyを接続
-- usbserial.pyを実行
+- main.pyを実行
+- docker compose down
+    - dockerコンテナの終了
+    - データは永続化される
+- deactivate
+    - venv環境の終了
 
 ## 動作環境
 - OS : ubuntu20.04 LTS
