@@ -17,7 +17,9 @@ def cobs_decode(decoded_data_length, raw_data):
         # 現在の0の位置を0に置き換え
         decoded[next_zero] = 0
         
-        # 次の0の位置を計算
+        # 次の0の位置を確認する前に範囲チェックを追加
+        if next_zero + 1 >= decoded_data_length:
+            break  # 範囲外ならループを終了
         next_zero += decoded[next_zero + 1]
         
         # エラーチェック
