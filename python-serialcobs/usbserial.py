@@ -46,7 +46,7 @@ def decode_packet(packet):
     unpacked_data = struct.unpack(data_format, decoded)
 
     # データを適切な形式で返す (例: 辞書型)
-    keys = ['time', 'mode', 'gps_acc', 'pi1', 'pi2', 'pi3', 'vi1', 'vi2', 'vi3', 'euler_l1', 'euler_l2',
+    keys = ['setuptime', 'mode', 'gps_acc', 'pi1', 'pi2', 'pi3', 'vi1', 'vi2', 'vi3', 'euler_l1', 'euler_l2',
             'euler_c1', 'euler_c2', 'euler_r1', 'euler_r2', 'heading', 'att_dt', 'ctrl_dt', 'main_dt',
             'battery_level1', 'battery_level2', 'pitotPressure', 'pitchDiff_left', 'pitchDiff_right',
             'rollDiff_left', 'rollDiff_right', 'power1', 'power2', 'checkSum']
@@ -66,7 +66,7 @@ def write_to_influx(data):
     # Line Protocol形式の文字列を構築
     # measurementを"telemetry"とし、各fieldをデータから取得
     # タグはflight=no1として固定
-    fields = ','.join([f'{key}={value}' for key, value in data.items() if key != 'checkSum'])
+    fields = ','.join([f'{key}={value:.6e}' for key, value in data.items() if key != 'checkSum'])
     line = f"telemetry,flight=no1 {fields}"
     print("============influxdbLINEPROTOCOL============")
     print(line)
@@ -86,14 +86,14 @@ while True:
     if ser.in_waiting > 0:
         # 0x00 まで読み込む (COBSの終端を意味する)
         packet = ser.read_until(b'\x00')
-        print(f"Received packet: {packet}")
-        print(f"Packet size: {len(packet)}")
+        # print(f"Received packet: {packet}")
+        # print(f"Packet size: {len(packet)}")
 
         # パケットをデコードしてデータを取得
         data = decode_packet(packet)
         if data is not None:
             # データの処理 (例: プリント、データベースへの書き込みなど)
-            print(f"Decoded data: {data}")
+            # print(f"Decoded data: {data}")
             # InfluxDBに書き込む
             write_to_influx(data)
         else:

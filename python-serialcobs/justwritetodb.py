@@ -10,7 +10,7 @@ token = "WeoauU5NpcJYeKxFS0-jIFjS4Qs_eZv79CkVn2wbdA9UsnIsLhFuxK_tk-2xqJiYx1a5fgG
 client = InfluxDBClient3(
     host='https://us-east-1-1.aws.cloud2.influxdata.com/',
     token=token,
-    database='testDatabase2'
+    database='testDatabase'
 )
 
 lines = [
@@ -43,7 +43,7 @@ lines = [
 ]
 
 lines2 = [
-    "telemetrytest5,flight=no mode=142680.0,gpsacc=12.01 1706431683"
+    "telemetry,flight=no1 time=2.462e+03,mode=9.850e+03,gps_acc=1.250e+01,pi1=6.669e+00,pi2=9.341e+00,pi3=-2.463e+02,vi1=-1.490e+00,vi2=3.570e-01,vi3=-1.000e-01,euler_l1=1.156e-01,euler_l2=-5.736e-02,euler_c1=1.561e-02,euler_c2=-6.516e-02,euler_r1=-8.439e-02,euler_r2=-7.297e-02,heading=4.683e-03,att_dt=7.025e+02,ctrl_dt=5.025e+02,main_dt=2.025e+02,battery_level1=9.996e+01,battery_level2=9.994e+01,pitotPressure=1.018e-28,pitchDiff_left=1.000e-03,pitchDiff_right=2.000e-03,rollDiff_left=3.000e-03,rollDiff_right=4.000e-03,power1=2.031e+00,power2=3.000e+00"
 ]
 # 現在のUnixタイムスタンプを秒単位で取得
 current_time = int(time.time())
