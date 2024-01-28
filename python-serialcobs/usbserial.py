@@ -1,6 +1,7 @@
 import serial
 import struct
-
+from influxdb_client_3 import InfluxDBClient3
+import os
 def cobs_decode(decoded_data_length, raw_data):
     # decoded_data_length = len(raw_data) - 1  # 最初のバイトは長さのため、デコードされたデータの長さは1小さい
     decoded = bytearray(decoded_data_length)
@@ -50,6 +51,27 @@ def decode_packet(packet):
             'rollDiff_left', 'rollDiff_right', 'power1', 'power2', 'checkSum']
     return dict(zip(keys, unpacked_data))
 
+# 環境変数からトークンを取得
+# token = os.getenv('INFLUX_TOKEN')
+token = "WeoauU5NpcJYeKxFS0-jIFjS4Qs_eZv79CkVn2wbdA9UsnIsLhFuxK_tk-2xqJiYx1a5fgGP0Oooyw0s50Vt4A=="
+# InfluxDBクライアントの設定
+client = InfluxDBClient3(
+    host='https://us-east-1-1.aws.cloud2.influxdata.com/',
+    token=token,
+    database='testDatabase'
+)
+
+def write_to_influx(data):
+    # Line Protocol形式の文字列を構築
+    # measurementを"telemetry"とし、各fieldをデータから取得
+    # タグはflight=no1として固定
+    fields = ','.join([f'{key}={value}' for key, value in data.items() if key != 'checkSum'])
+    line = f"telemetry,flight=no1 {fields}"
+    print("============influxdbLINEPROTOCOL============")
+    print(line)
+    # InfluxDBに書き込む
+    # client.write([line], write_precision='s')
+
 # USBシリアル通信の設定
 serial_port = '/dev/ttyACM0'  # ポートは環境によって異なる
 baud_rate = 9600  # ボーレートはデバイスによって異なる
@@ -71,5 +93,7 @@ while True:
         if data is not None:
             # データの処理 (例: プリント、データベースへの書き込みなど)
             print(f"Decoded data: {data}")
+            # InfluxDBに書き込む
+            write_to_influx(data)
         else:
             print("Data is None, possible structure mismatch or decode error.")
