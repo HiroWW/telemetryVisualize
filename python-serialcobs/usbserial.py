@@ -1,14 +1,34 @@
 import serial
-from cobs import cobs  # cobsライブラリを使用
 import struct
 
+def cobs_decode(decoded_data_length, raw_data):
+    # decoded_data_length = len(raw_data) - 1  # 最初のバイトは長さのため、デコードされたデータの長さは1小さい
+    decoded = bytearray(decoded_data_length)
+    
+    # 最初のバイトは次の0の位置を示す
+    next_zero = raw_data[0] - 1
+    
+    # データをコピー（最初のバイトは除く）
+    for i in range(decoded_data_length):
+        decoded[i] = raw_data[i + 1]
+    
+    # 0を置き換える
+    while next_zero < decoded_data_length:
+        # 現在の0の位置を0に置き換え
+        decoded[next_zero] = 0
+        
+        # 次の0の位置を計算
+        next_zero += decoded[next_zero + 1]
+        
+        # エラーチェック
+        if next_zero > decoded_data_length or next_zero == 0:
+            break
+    
+    return decoded
 # COBS逆変換とデータ解析を行う関数
 def decode_packet(packet):
     # COBS逆変換
-    try:
-        decoded = cobs.decode(packet)
-    except cobs.DecodeError:
-        return None  # デコード失敗時にはNoneを返す
+    decoded = cobs_decode(116, packet)
 
     # データのフォーマットを定義
     # fは4バイトのfloat、4sは4バイトの文字列
@@ -41,10 +61,13 @@ while True:
     if ser.in_waiting > 0:
         # 0x00 まで読み込む (COBSの終端を意味する)
         packet = ser.read_until(b'\x00')
-        print(packet)
+        print(f"Received packet: {packet}")
+        print(f"Packet size: {len(packet)}")
 
         # パケットをデコードしてデータを取得
         data = decode_packet(packet)
         if data is not None:
             # データの処理 (例: プリント、データベースへの書き込みなど)
-            print(data)
+            print(f"Decoded data: {data}")
+        else:
+            print("Data is None, possible structure mismatch or decode error.")
