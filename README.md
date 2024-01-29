@@ -23,9 +23,13 @@ Groundstation Assembeled by InfluxDB and grAfana
 - docker compose up -d
     - grafanaの立ち上げ
         - そのうちlocalでdbも立てられるようにしたい
-    - http://localhost:8086へブラウザでアクセス
-- source ./envs/virtual-env/bin/activate
-    - envs/virtual-env以下のpython仮想環境のアクティベート
+    - "http://localhost:8086"にブラウザでアクセス
+- python3 -m venv .venv
+    - 仮想環境の作成
+- pip install -r requirements.txt
+    - 必要ライブラリのインストール
+- source .venv/bin/activate
+    - python仮想環境のアクティベート
 - PCにTeensyを接続
 - main.pyを実行
 - docker compose down
