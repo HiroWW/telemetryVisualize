@@ -35,6 +35,8 @@ Groundstation Assembeled by InfluxDB and grAfana
     - venv環境の終了
 
 ## 動作環境
-- OS : ubuntu20.04 LTS
+- OS
+    - Python : ubuntu20.04 LTSのみ
+    - Grafana : WSL2 / Ubuntu20.04LTS 
 - Grafana : grafana-oss:latest
 - InfluxDB : cloud serverless (Influx3.0 = SQLでのクエリに対応している唯一のver,OSS版未リリース)
