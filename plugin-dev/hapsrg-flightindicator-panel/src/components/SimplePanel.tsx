@@ -3,6 +3,8 @@ import { PanelProps } from '@grafana/data';
 import { SimpleOptions } from 'types';
 import { css, cx } from '@emotion/css';
 import { useStyles2, useTheme2 } from '@grafana/ui';
+import { HeadingIndicator } from '../libs/react-flight-indicators';
+
 
 interface Props extends PanelProps<SimpleOptions> {}
 
