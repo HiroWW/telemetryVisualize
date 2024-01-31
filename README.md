@@ -1,5 +1,9 @@
 # telemetryVisualizer
 
+
+
+<img src="./docs/p231102p03.jpg" width="500">
+
 GAIA(仮称)
 
 Groundstation Assembeled by InfluxDB and grAfana
