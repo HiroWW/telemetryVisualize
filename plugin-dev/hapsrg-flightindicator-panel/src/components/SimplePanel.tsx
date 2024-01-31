@@ -31,6 +31,7 @@ const getStyles = () => {
 export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) => {
   const theme = useTheme2();
   const styles = useStyles2(getStyles);
+  const headingValue = 90;
   return (
     <div
       className={cx(
@@ -41,6 +42,7 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
         `
       )}
     >
+      <HeadingIndicator heading={headingValue} />
       <svg
         className={styles.svg}
         width={width}
