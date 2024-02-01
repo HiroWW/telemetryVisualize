@@ -4,9 +4,7 @@
 
 <img src="./docs/p231102p03.jpg" width="500">
 
-GAIA(仮称)
-
-Groundstation Assembeled by InfluxDB and grAfana
+GAIA - **G**roundstation **A**ssembeled by **I**nfluxDB and gr**A**fana (仮称)
 
 ## システム概要
 マイコンからのデータをGrafanaによって可視化するソフトウェア
