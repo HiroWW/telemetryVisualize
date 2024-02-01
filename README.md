@@ -41,23 +41,25 @@ GAIA - **G**roundstation **A**ssembeled by **I**nfluxDB and gr**A**fana (仮称)
 - venv仮想環境の設定と必要ライブラリのインストール
     - python3 -m venv .venv
         - 仮想環境の作成
+    - ./.venv/Scripts/activate(windows) or source .venv/bin/activate(bash)
+        - 一旦activate
     - pip install -r requirements.txt
         - 必要ライブラリのインストール
+    - deactivate
+        - venv環境の終了
 ### influxdb3-python環境(windows)
 1. ./.venv/Scripts/activate
     - python仮想環境のアクティベート
-2. pip install -r requirements.txt
-    - 必要ライブラリのインストール
-3. PCにTeensyを接続
-4. main-windows.pyを実行
-5. deactivate
+2. PCにTeensyを接続
+3. main-windows.pyを実行
+4. deactivate
     - venv環境の終了
 ### influxdb3-python環境(ubuntu)
 1. source .venv/bin/activate
     - python仮想環境のアクティベート
 2. PCにTeensyを接続
-    - main-ubuntu.pyを実行
-3. deactivate
+3. main-ubuntu.pyを実行
+4. deactivate
     - venv環境の終了
 ## 動作環境
 - OS
