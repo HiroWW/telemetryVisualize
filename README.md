@@ -22,24 +22,37 @@ GAIA - **G**roundstation **A**ssembeled by **I**nfluxDB and gr**A**fana (仮称)
     - databaseへの書き込み
 
 ## How To Use
+### Grafana環境
 - docker compose up -d
     - grafanaの立ち上げ
         - そのうちlocalでdbも立てられるようにしたい
     - "http://localhost:8086"にブラウザでアクセス
-- python3 -m venv .venv
-    - 仮想環境の作成
-- pip install -r requirements.txt
-    - 必要ライブラリのインストール
-- source .venv/bin/activate
-    - python仮想環境のアクティベート
-- PCにTeensyを接続
-- main.pyを実行
 - docker compose down
     - dockerコンテナの終了
     - データは永続化される
+### influxdb3-python環境(ubuntu)
+- python3 -m venv .venv
+    - 仮想環境の作成
+- source .venv/bin/activate
+    - python仮想環境のアクティベート
+- pip install -r requirements.txt
+    - 必要ライブラリのインストール
+- PCにTeensyを接続
+- main.pyを実行
 - deactivate
     - venv環境の終了
-
+### influxdb3-python環境(windows)
+- 未動確
+- python3 -m venv .venv
+    - 仮想環境の作成
+-　./.venv/Scripts/activate
+    - python仮想環境のアクティベート
+- pip install -r requirements.txt
+    - 必要ライブラリのインストール
+- PCにTeensyを接続
+- main.pyを実行
+- deactivate
+    - venv環境の終了
 ## 動作環境
 - OS
     - Python : ubuntu20.04 LTSのみ
