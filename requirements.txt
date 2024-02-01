@@ -1,2 +1,2 @@
-influxdb-client
+influxdb3-python
 pyserial
