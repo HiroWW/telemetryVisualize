@@ -42,7 +42,12 @@
     - wsl1はシステムコールを翻訳してwindowsカーネルで動くからdocker非対応
 - 一応decktopを使わないでwsl2上でdockerを構築することも可能らしい
     - 商用利用のときぐらいしかこういうケースはない
-
+### plugin development
+- react-flight-indicatorをreact18仕様にしてbuildする
+- distをpluginのsrc/libs以下にcp
+- plugin dirはtutorialに従って初期化する
+- componentはcomponent/simplepanel.tsxに書き加える
+- fieldtype=numberを指定すればクエリでもってきた値を自動的にいれてくれる
 ### 備忘録
 - databaseはUSBシリアルデバイスとの通信が必須
 - LoramoduleからのUSBシリアル信号を読み取ってdatabase形式に変換して保存する必要があるため
