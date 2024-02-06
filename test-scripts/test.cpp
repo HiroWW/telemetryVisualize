@@ -3,10 +3,16 @@
 
 void cobsDecode(int decodedDataLength, unsigned char* rawData, unsigned char* decoded) {
     int nextZero = rawData[0] - 1;
-    for(int i  = 0; i < decodedDataLength; ++i) decoded[i] = rawData[i+1];
+    for(int i  = 0; i < decodedDataLength; ++i) {
+        decoded[i] = rawData[i+1];
+        std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(decoded[i]) << " " ;
+    }
+    std::cout << " " << std::endl;
     while(nextZero < decodedDataLength) {
         decoded[nextZero] = 0;
+        std::cout << "next zero" << nextZero << std::endl;
         nextZero += rawData[nextZero + 1];
+        std::cout << "next zero" << nextZero << std::endl;
         if(nextZero > decodedDataLength || nextZero == 0) { // Error Situation
             break;
         }

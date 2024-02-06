@@ -25,6 +25,7 @@ services:
       - influxdb
     volumes:
      - ./docker/grafana/data:/var/lib/grafana
+     - ./docker/grafana/data/grafana.ini:/etc/grafana/grafana.ini
     environment:
       - GF_SERVER_ROOT_URL=http://localhost:8085
       - GF_DEFAULT_APP_MODE=development
