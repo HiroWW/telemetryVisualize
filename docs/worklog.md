@@ -48,6 +48,18 @@
 - plugin dirはtutorialに従って初期化する
 - componentはcomponent/simplepanel.tsxに書き加える
 - fieldtype=numberを指定すればクエリでもってきた値を自動的にいれてくれる
+### server
+- 各自のlocalでgrafanaを立ち上げて使わせるのは渋いので、ウェブサービスとしてデプロイしたい
+- dockerが使える安価な、出来れば無料のレンタルサーバーを選定
+- Google Cloudの無料枠をつかうことにした
+- 自前でサーバーを組むのはセキュリティ関連でさすがに自信がないので、その辺をGUIでポチポチすれば設定できるのと、ドキュメントが公式も非公式も充実してたのが選定理由
+### google cloud project
+- 基本的にはインスタンスを作ってsshすれば普通のlinuxマシンとして扱える
+- httpはサービスが走っていないとerror conection refusedを吐く
+- https化したい
+- 最初のlogin以外はそんなに動作も重くない（いい話
+- やはりGrafanaの外部マウントの権限周りが沼
+- sshをwslからできるようにしたいね
 ### 備忘録
 - databaseはUSBシリアルデバイスとの通信が必須
 - LoramoduleからのUSBシリアル信号を読み取ってdatabase形式に変換して保存する必要があるため
