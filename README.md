@@ -1,10 +1,10 @@
-# telemetryVisualizer
+# GAIA ground station
 
 
 
-<img src="./docs/p231102p03.jpg" width="500">
+<img src="./docs/0776799e9e70b2a44e5d22091cc10434.png" width="500">
 
-GAIA - **G**roundstation **A**ssembeled by **I**nfluxDB and gr**A**fana (仮称)
+*G*rafana *A*nd *I*nfluxDB based data *A*nalize system
 
 ## システム概要
 マイコンからのデータをGrafanaによって可視化するソフトウェア
@@ -21,7 +21,7 @@ GAIA - **G**roundstation **A**ssembeled by **I**nfluxDB and gr**A**fana (仮称)
     - influxdb line protocolへの変換
     - databaseへの書き込み
 
-## How To Use
+## How To Use ( in local )
 
 ### Grafana環境
 - docker compose up -d
