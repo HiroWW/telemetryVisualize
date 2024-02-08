@@ -9,6 +9,8 @@
 ## システム概要
 マイコンからのデータをGrafanaによって可視化するソフトウェア
 
+<img src="./docs/gaia-screen.png" width="500">
+
 - 通信の流れ
     - MCU <-(USBserial)> Python3 <-(https)-> InfluxDB Cloud serverless <-(https / FlightSQL)-> Grafana
 - MCU
