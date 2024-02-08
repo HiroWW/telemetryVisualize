@@ -23,6 +23,18 @@
     - influxdb line protocolへの変換
     - databaseへの書き込み
 
+## How To Use ( for server )
+- Grafanaはリモートサーバー上に立てることを想定している
+- サーバー上には本リポジトリのdocker-compose.yml及びdocker以下があればOK
+- requirements
+    - docker及びdocker-composeのinstall
+- 基本的にはdocker-compose up -dでサービスが走り出す
+    - localhostの8085にport forwardをしているので、インターネット経由では"http://[外部IPアドレス]:8085"でアクセス可能
+    - 必要に応じてドメイン取得やssl化を行う
+- 注意事項
+    - grafanaのdataを./docker/grafana/data以下にマウントしている都合上、dockerに書き込み権限を付与する必要がある
+    - chmod -R 777 ./docker/grafana/dataが一番楽
+
 ## How To Use ( in local )
 
 ### Grafana環境
