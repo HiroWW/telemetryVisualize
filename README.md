@@ -12,9 +12,9 @@
 <img src="./docs/gaia-screen.png" width="500">
 
 - 通信の流れ
-    - MCU <-(USBserial)> Python3 <-(https)-> InfluxDB Cloud serverless <-(https / FlightSQL)-> Grafana
+    - MCU <-(USBserial)> Python3 <-(https)-> InfluxDB Cloud serverless <-(https / FlightSQL)-> Grafana <-(http)-> User's browser
 - MCU
-    - Teensy4.1
+    - Teensy4.0
     - COBS変換してシリアル通信でPCへ送信
 - Python
     - venv仮想環境
