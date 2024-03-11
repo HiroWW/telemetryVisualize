@@ -42,6 +42,7 @@ class TelemetryPack(ctypes.Structure):
         ('rollDiff_right', ctypes.c_float),
         ('power1', ctypes.c_float),
         ('power2', ctypes.c_float),
+        ('sdFlag', ctypes.c_float),
         ('checkSum', ctypes.c_char * 4)
     ]
 
